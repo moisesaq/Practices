@@ -113,7 +113,7 @@ public class ListCountDownTimer extends Fragment implements OnClickListener, OnI
 					//Log.d("TEST", ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 					mHandler.post(updateRemainingTimeRunnable);
 				}
-			}, 1000, 1000);
+			}, 2000, 1000);
 		}
 		
 		public class ViewHolder{
@@ -132,7 +132,7 @@ public class ListCountDownTimer extends Fragment implements OnClickListener, OnI
 				Log.d("TEST", ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> "+queueItem.getTimerCount());
 				if (timer > 0) {
 					Log.d("TEST", ">>>> ok "+timer);
-					tvTimerCount.setText(String.valueOf(timer/1000));
+					tvTimerCount.setText(String.valueOf(timer));
 					queueItem.setTimerCount(timer-1000);
 				} else {
 					tvTimerCount.setText("Done!");
