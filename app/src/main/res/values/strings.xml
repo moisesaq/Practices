@@ -6,4 +6,7 @@
     <string name="test_count_down_timer">Test Count Down Timer</string>
     <string name="delete_contact">Delete</string>
 
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="notifications">Notifications</string>
+
 </resources>

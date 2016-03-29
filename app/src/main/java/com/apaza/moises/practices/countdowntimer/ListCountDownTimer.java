@@ -90,10 +90,11 @@ public class ListCountDownTimer extends Fragment implements OnClickListener, OnI
 		private Runnable updateRemainingTimeRunnable = new Runnable() {
 			@Override
 			public void run() {
-				synchronized (lstHolders) {
-					for (ViewHolder holder : lstHolders) {
-						holder.updateTimeRemaining();
-					}
+				/*synchronized (lstHolders) {
+
+				}*/
+				for (ViewHolder holder : lstHolders) {
+					holder.updateTimeRemaining();
 				}
 			}
 		};
@@ -114,6 +115,7 @@ public class ListCountDownTimer extends Fragment implements OnClickListener, OnI
 					mHandler.post(updateRemainingTimeRunnable);
 				}
 			}, 2000, 1000);
+			//FIXME CORRECT HERE
 		}
 		
 		public class ViewHolder{

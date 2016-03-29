@@ -1,6 +1,7 @@
 package com.apaza.moises.practices;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,14 +17,16 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.apaza.moises.practices.countdowntimer.ListCountDownTimer;
+import com.apaza.moises.practices.notifications.TestNotificationFragment;
 import com.apaza.moises.practices.ormlite.ContactActivity;
 import com.apaza.moises.practices.pinnedlistview.ListHeaderCustom;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements TestNotificationFragment.OnFragmentInteractionListener{
 
     private ListHeaderCustom listHeaderCustom;
     private MainMenu mainMenu;
     private ListCountDownTimer listCountDownTimer;
+    private TestNotificationFragment testNotificationFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,12 +67,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        switch (item.getItemId()) {
+        switch (id) {
             case R.id.action_show_pinned_section_list_view:
                 if(listHeaderCustom == null) listHeaderCustom = new ListHeaderCustom();
                 showFragment(listHeaderCustom, ListHeaderCustom.TAG);
@@ -83,8 +81,18 @@ public class MainActivity extends AppCompatActivity {
                 if(listCountDownTimer == null) listCountDownTimer = new ListCountDownTimer();
                 showFragment(listCountDownTimer, ListCountDownTimer.TAG);
                 return true;
+            case R.id.action_notifications:
+                if(testNotificationFragment == null)
+                    testNotificationFragment = new TestNotificationFragment();
+                showFragment(testNotificationFragment, testNotificationFragment.getClass().getSimpleName());
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }
